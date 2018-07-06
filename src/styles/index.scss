@@ -1,0 +1,183 @@
+// 颜色变量
+$dark-gray: #666;
+$light-gray: #999;
+$white-gray: #eee;
+$black: #333;
+$blue: #456eff;
+$white: #fff;
+$yellow: #ffc928;
+$light-orange: #fdba6b;
+$dark-orange: #e78b1f;
+$red: #f01414;
+$red-price: #e62020;
+$red-info: #f05050;
+$light-black: #000033;
+$dark-black: #000; // 字号变量
+$twenty-font: 20px;
+$twelve-font: 12px;
+$fourteen-font: 14px;
+$sixteen-font: 16px;
+$eighteen-font: 18px;
+$thirty-font: 30px;
+$twenty-six-font: 26px;
+$twenty-two-font: 22px;
+$thirty-two-font: 32px;
+$border-style: 1px solid #eee; // 主区域宽度
+$main-width: 1300px;
+$content-width: 982px;
+$dark-blue: #00356a;
+$light-blue: #d0d9fb; // 主轴方向，交叉轴上对齐方式，主轴上对齐方式
+@mixin flex-style($direction,$align,$justify-content) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify-content;
+}
+@mixin border-shadow {
+  box-shadow: 1px 1px 20px rgba(0,0,0,0.1);
+}
+@mixin usual-btn($bgcolor,$fontcolor) {
+  @include flex-style(row,center,center);
+  background-color: $bgcolor;
+  color: $fontcolor;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+@mixin blue-shadow-btn($bgcolor,$fontcolor) {
+  background-color: $bgcolor;
+  box-shadow: 6px 6px 24px rgba(52,93,245,0.8);
+  color: $fontcolor;
+  cursor: pointer;
+}
+// 新增样式
+
+.usual-box {
+  width: $main-width;
+  margin: auto;
+}
+
+.to-more {
+  font-size: $fourteen-font;
+  color: $dark-gray;
+  font-weight: bold;
+  margin: 0 6px;
+}
+// 结尾
+
+.main-wrapper {
+  width: $main-width;
+  height: auto;
+  margin-top: 30px;
+  @include flex-style(row,flex-start,space-between);
+}
+
+.content-wrapper {
+  width: 982px;
+  height: auto;
+}
+
+.pagigation-box {
+  margin-top: 36px;
+  @include flex-style(row,center,center);
+}
+
+.item-wrapper {
+  width: 934px;
+  @include flex-style(row,flex-start,flex-start);
+  flex-wrap: wrap;
+  align-content: space-between;
+
+  > div:not(:nth-child(3n+1)) {
+    margin-left: 17px;
+  }
+}
+
+.item-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 200px;
+  background-color: rgba(0,0,0,0.2);
+  @include flex-style(row,center,center);
+  color: $white;
+  font-size: $eighteen-font;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 24px;
+}
+
+.box-title {
+  width: 100%;
+  height: 42px;
+  padding-top: 12px;
+  border-bottom: $border-style;
+  line-height: 42px;
+  color: $dark-black;
+  font-size: $eighteen-font;
+}
+
+.box-content {
+  width: 100%;
+  padding: 19px 0;
+  font-size: $fourteen-font;
+  color: $dark-gray;
+  line-height: 24px;
+  text-indent: 28px;
+  text-align: justify;
+}
+
+.top-title-line {
+  width: 100%;
+  height: 50px;
+  @include flex-style(row,center,flex-start);
+
+  > span {
+    margin-right: 5px;
+
+    &:not(:nth-child(1)) {
+      margin-left: 5px;
+    }
+
+    &:not(:nth-last-child(1)):hover {
+      color: $blue;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.form-title {
+  width: 100%;
+  padding-top: 30px;
+  font-size: $sixteen-font;
+  color: $black;
+  letter-spacing: 2px;
+  line-height: 36px;
+  border-bottom: $border-style;
+  margin-bottom: 17px;
+}
+
+.no-list {
+  width: 100%;
+  @include flex-style(column,center,center);
+
+  > p {
+    margin-top: 40px;
+    font-size: 24px;
+    color: $blue;
+  }
+}
