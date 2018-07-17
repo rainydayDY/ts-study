@@ -4,7 +4,7 @@
 * @createDate 2018/05/03
 */
 <template>
-<div class="box-wrapper">
+<div class="box-wrapper" @click="handleToDetail(list.id)">
   <div class="img-wrapper">
     <img :src="list.courseImg"/>
   </div>
@@ -28,11 +28,27 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
+interface DefaultList {
+    courseImg: string;
+    name: string;
+    techerName: string;
+    studyCount: string;
+    courseIntro?: string;
+    sale: number;
+    price: number;
+}
 @Component
 export default class CourseList extends Vue {
-    @Prop({default: () => {}}) private list: object;
-    @Prop() private showDesc: boolean;
+    @Prop() private list!: DefaultList;
+    @Prop() private showDesc!: boolean;
+    private handleToDetail(id: number) {
+        this.$router.push({
+            path: 'detail',
+            query: {
+                id: String(id),
+            },
+        });
+    }
 }
 </script>
 

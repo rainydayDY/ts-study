@@ -2,7 +2,7 @@ const data = {
     state: {
         iconsMap: [],
     },
-    generate(iconsMap) {
+    generate(iconsMap: any) {
         this.state.iconsMap = iconsMap;
     },
 };

@@ -28,13 +28,13 @@ export default class About extends Vue {
                 NetworkRequest.streamRequest({
                     url: '/course/selectRecommendCourseList',
                     method: 'get',
-                }, (response) => {
+                }, (response: any) => {
                     resolve();
                     this.recommendList = response.slice(0, 5);
                 }, {
                     cacheName: 'recommendList',
                     cacheTime: 180000,
-                    isNow: {isNow},
+                    isNow,
                 });
             });
         }
