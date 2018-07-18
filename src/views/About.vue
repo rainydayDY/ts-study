@@ -11,13 +11,24 @@ import { Component, Vue } from 'vue-property-decorator';
 import courseList from '@/components/CourseList.vue'; // @ is an alias to /src
 import NetworkRequest from '@/utils/request';
 
+interface DefaultList {
+    id: number;
+    courseImg: string;
+    name: string;
+    techerName: string;
+    studyCount: string;
+    courseIntro?: string;
+    sale: number;
+    price: number;
+}
+
 @Component({
   components: {
     courseList,
   },
 })
 export default class About extends Vue {
-    private recommendList = [];
+    private recommendList: DefaultList[] = [];
     private showDesc = true;
     private mounted() {
     this.getRecommend(false);

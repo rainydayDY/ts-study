@@ -23,6 +23,24 @@ interface DefaultList {
 
 export default class CourseList extends Vue {
     @Prop() private list!: DefaultList;
+    private get isSafari() {
+        return navigator.userAgent.toLowerCase().includes('safari/604');
+    }
+    private handleToDetail(id: number) {
+        this.$router.push({
+            path: 'detail',
+            query: {
+                id: String(id),
+            },
+        });
+        if (this.isSafari) {
+            history.go(-1);
+            location.reload();
+        } else {
+            this.$router.go(0);
+            scrollTo(0, 0);
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

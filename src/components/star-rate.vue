@@ -19,14 +19,14 @@ export default class StarRate extends Vue {
   @Prop({default: 5}) private rate!: number;
   @Prop({default: '12px'}) private fontSize!: string;
   @Prop({default: false}) private showScore!: boolean;
-  private wholeRate = this.rate;
-  private nullRate = 5 - this.rate;
+  private wholeRate = Math.floor(this.rate);
+  private nullRate = Math.floor(5 - this.rate);
   private timeStr = new Date().getTime();
   @Watch('rate')
   private onRateChanged() {
-      this.wholeRate = this.rate;
+      this.wholeRate = Math.floor(this.rate);
       this.timeStr = new Date().getTime();
-      this.nullRate = 5 - this.rate;
+      this.nullRate = Math.floor(5 - this.rate);
   }
 
   get halfRate() {

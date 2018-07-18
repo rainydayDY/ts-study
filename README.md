@@ -20,3 +20,4 @@ vue create project-name
 3. [vue-cli 3.0配置信息](https://cli.vuejs.org/config/#babel)
 4. [重新创建Twitter点赞动效](http://www.open-open.com/lib/view/open1467428268935.html)
 5. [es6对象字面量增强](https://www.cnblogs.com/monsterooo/p/6523435.html)
+6. [优质参考项目](https://github.com/havvg/vuejs-typescript-todo-mvc)

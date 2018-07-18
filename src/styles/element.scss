@@ -1,0 +1,464 @@
+// $--color-primary: #4bbbfa !default;
+// $--font-path: 'element-ui/lib/theme-chalk/fonts' !default; // @import 'element-ui/lib/theme-chalk/index.css';
+
+body {
+  margin: 0;
+  min-width: 1300px;
+}
+
+input {
+  background: none;
+  outline: none;
+  border: 0;
+}
+
+input::-webkit-input-placeholder {
+  /* WebKit browsers*/
+  color: #ccc !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.el-pager li.active {
+  background-color: #456eff !important;
+  border: none !important;
+}
+
+.el-pagination.is-background .el-pager li {
+  color: #999;
+
+  &:hover {
+    color: #456eff !important;
+  }
+}
+
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  border-radius: 38px !important;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #999;
+  line-height: 38px;
+  margin: 0 10px !important;
+  font-size: 18px !important;
+  font-weight: lighter !important;
+  background-color: #fff;
+
+  &:hover {
+    color: #456eff;
+  }
+}
+
+.el-pagination .btn-next .el-icon,
+.el-pagination .btn-prev .el-icon {
+  font-size: 18px !important;
+}
+// 登录页面输入框的样式
+
+.form-box .el-input__inner {
+  border-radius: 0 !important;
+  width: 340px !important;
+  height: 46px !important;
+  border: none !important;
+  outline: none !important;
+  background-color: rgba(255,255,255,0.2);
+  padding-left: 50px !important;
+  color: #fff;
+}
+
+.tel-user .el-input__inner {
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+}
+
+.password-user .el-input__inner {
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
+
+.el-input__inner:focus {
+  border-color: #4bbbfa !important;
+}
+//注册页面input样式
+
+.tel-register .el-input__inner {
+  border-radius: 12px!important;
+  margin-bottom: 10px;
+}
+
+.password-register .el-input__inner {
+  border-radius: 12px!important;
+  margin-top: -10px;
+}
+
+.password-password .el-input__inner {
+  border-radius: 12px!important;
+  margin-top: -22px;
+}
+
+.verify-input .el-input__inner {
+  border-radius: 12px!important;
+  margin-top: -20px;
+  width: 224px !important;
+}
+
+.el-input--small .el-input__inner {
+  height: 28px !important;
+}
+
+.el-input__inner:focus {
+  border-color: #4bbbfa !important;
+}
+//修改登录协议复选框样式 --- 开始
+
+.form-box .el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: rgba(255,255,255,1) !important;
+  border-color: rgba(255,255,255,1) !important;
+}
+
+.form-box .el-button--primary.is-disabled:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: rgba(255, 255, 255, 0.2);
+}
+
+.form-box .el-form-item__content {
+  line-height: 0 !important;
+}
+
+.checked-agreement .el-checkbox__inner {
+  border-radius: 100%!important;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255,255,255,0.4) !important;
+  border-color: rgba(255,255,255,0.4) !important;
+}
+
+.checked-agreement .el-checkbox__inner::after {
+  top: 0;
+  box-sizing: content-box;
+  content: "";
+  border: 2px solid rgb(0,0,0);
+  opacity: 0.5;
+  border-left: 0;
+  border-top: 0;
+  height: 7px;
+  left: 3.3px;
+  position: absolute;
+  transform: rotate(45deg) scaleY(0);
+  width: 3px;
+  transition: transform 0.15s cubic-bezier(.71,-.46,.88,.6) 0.05s;
+  transform-origin: center;
+}
+//修改登录协议复选框样式 --- 结束
+// 修改密码验证信息行内样式--登录页
+
+.wrap-box2 .el-form-item__error--inline {
+  position: absolute;
+  text-align: right;
+  height: 46px;
+  line-height: 46px;
+  width: 150px;
+  top: auto;
+  left: auto;
+  display: inline-block;
+  margin-left: -164px;
+  padding-top: 0;
+  color: #00FFFF;
+}
+//验证码样式
+
+.verify-code .el-form-item__error {
+  color: #00FFFF;
+  position: absolute;
+  text-align: right;
+  height: 46px;
+  line-height: 46px;
+  top: -20px;
+  left: auto;
+  display: inline-block;
+  margin-left: 98px;
+  padding-top: 0;
+  width: 116px;
+}
+//修改密码验证信息行内样式--注册页
+
+.wrap-register .el-form-item__error--inline {
+  position: absolute;
+  text-align: right;
+  height: 46px;
+  line-height: 46px;
+  width: 150px;
+  top: -10px;
+  left: auto;
+  display: inline-block;
+  margin-left: -164px;
+  padding-top: 0;
+  color: #00FFFF;
+}
+// 修改找回密码第二步行内样式--找回密码第二步
+
+.wrap-findpass .el-form-item__error--inline {
+  top: -21px!important;
+}
+// 修改手机号验证信息行内样式--登录页
+
+.wrap-box .el-form-item__error--inline {
+  top: auto!important;
+}
+
+.el-checkbox__input.is-checked+.el-checkbox__label {
+  color: rgba(255,255,255,1) !important;
+}
+// 重置safari的默认图标样式
+
+input:focus::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  position: absolute;
+  right: 0;
+}
+// 入驻信息
+
+.el-input--medium .el-input__inner {
+  height: 34px !important;
+  line-height: 34px !important;
+  border: 1px solid #eee !important;
+
+  &:focus {
+    border: 1px solid #456eff !important;
+  }
+
+  &::-webkit-input-placeholder {
+    letter-spacing: 2px;
+  }
+}
+
+.el-textarea__inner {
+  border: 1px solid #eee !important;
+
+  &:hover {
+    border: 1px solid #456eff !important;
+  }
+  font-size: 14px;
+  letter-spacing: 2px !important;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+textarea {
+  overflow: hidden;
+}
+
+.basic-info-box .el-form-item__label {
+  color: #333 !important;
+}
+
+.img-box .el-form-item__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.basic-info-box .el-form-item__label:before {
+  content: '' !important;
+  color: #fff !important;
+}
+
+.basic-info-box .el-form-item__error {
+  color: #456eff !important;
+  top: 10px !important;
+  left: 280px !important;
+}
+
+.code-btn + .el-form-item__error {
+  left: 290px !important;
+}
+
+.change-phone .code-btn {
+  padding: 0 !important;
+}
+
+.easy-textarea {
+  width: 386px;
+}
+
+.easy-span + .el-form-item__error {
+  left: 400px !important;
+}
+// 上传资质
+
+.input-p + .el-form-item__error {
+  left: 670px !important;
+}
+
+.img-upload+ .el-form-item__error {
+  left: 220px !important;
+}
+
+.el-radio__input.is-checked .el-radio__inner {
+  border-color: #456eff;
+  background-color: #456eff;
+}
+
+.el-radio__input.is-checked+.el-radio__label {
+  color: #456eff;
+}
+
+.change-btn + .el-form-item__error {
+  left: 350px !important;
+}
+
+table,
+td,
+th {
+  border: none !important;
+}
+//教师发布课程input框提示信息样式
+
+.name-prompt .el-form-item__error {
+  left: 270px !important;
+}
+
+.teacher-prompt .el-form-item__error {
+  left: 415px !important;
+}
+// 教师发布课程修改select选框
+
+.course-category .el-input__inner {
+  width: 242px;
+  border: 1px solid #eee !important;
+
+  &:focus {
+    border: 1px solid #456eff !important;
+  }
+}
+
+.el-cascader-menu__item {
+  padding-left: 10px;
+}
+
+.el-cascader-menu__item--extensible:after {
+  font-family: element-icons;
+  content: "\E604";
+  font-size: 14px;
+  color: #bfcbd9;
+  position: absolute;
+  right: 6px;
+}
+
+.el-cascader-menu__item.is-active {
+  color: #456eff !important;
+}
+// 上传课程dialog样式
+
+.dialog-input .el-form-item__error {
+  left: 415px !important;
+}
+// 修改发布课程第三步确定售价-发送验证码input框样式
+
+.verification-code .el-input__inner {
+  height: 34px;
+  border: 1px solid #eee !important;
+
+  &:focus {
+    border: 1px solid #456eff !important;
+  }
+}
+
+.course-select .el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+  background-color: #D0D9FB!important;
+}
+
+.sale-price .el-form-item__error {
+  left: 310px !important;
+}
+
+.choose-sale .el-form-item__error {
+  left: 240px !important;
+}
+
+.verify-number .el-form-item__error {
+  left: 280px !important;
+}
+// 视频播放投诉dialog样式修改
+
+.complaints-dialog .el-dialog__body {
+  padding: 30px 40px;
+}
+// 修改投诉视频的弹出框的radio文字大小
+
+.radio-box .el-radio__label {
+  font-size: 12px!important;
+  color: #333;
+}
+// radio-input颜色
+
+.radio-box .el-radio__inner {
+  border: 1px solid #999 !important;
+
+  &:hover {
+    border: 1px solid #456eff !important;
+  }
+
+  &:focus {
+    border: 1px solid #456eff !important;
+  }
+}
+// 投诉页面修改radio位置
+
+.radio-box .el-radio+.el-radio {
+  margin-left: 0!important;
+}
+// 投诉页面修改el-form-item样式
+
+.complaint-reason .el-form-item__content {
+  line-height: 0!important;
+}
+// 修改分页鼠标滑过文字样式
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  color: #FFFFFF!important;
+}
+// 修改长传视频样式
+
+.update-course .el-dialog__header {
+  padding: 30px 40px 0 40px!important !important;
+  letter-spacing: 0!important;
+}
+
+.update-course .el-dialog__body {
+  padding: 40px!important !important;
+}
+
+.update-course .el-button--primary {
+  background-color: #456eff;
+  border-color: #456eff;
+}
+
+.update-course .el-button {
+  padding: 0!important !important;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+// 修改投诉提示错误信息的样式
+
+.complaint-reason .el-form-item__error {
+  color: #456eff !important;
+  top: -29px !important;
+  left: 76px !important;
+}
+
+input::-ms-clear {
+  display: none;
+}

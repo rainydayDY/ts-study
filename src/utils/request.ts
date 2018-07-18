@@ -11,7 +11,7 @@
 // import { Message, MessageBox } from 'element-ui';
 import router from '@/router';
 // import Cookies from 'js-cookie';
-import store from '@/store';
+import store from '@/store/index';
 import axios from 'axios';
 
 // 创建axios实例
@@ -23,9 +23,9 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use((config) => {
     // Do something before request is sent
-    // if (store.state.user.token) {
-    //     config.headers.token = localStorage.getItem('TokenKey'); // 让每个请求携带token--['X-Token']为自定义key 请根据实际情况自行修改
-    // }
+    if (store.state.user.token) {
+        config.headers.token = localStorage.getItem('TokenKey'); // 让每个请求携带token--['X-Token']为自定义key 请根据实际情况自行修改
+    }
     return config;
 }, (error) => {
     // Do something with request error

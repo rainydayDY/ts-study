@@ -18,7 +18,7 @@
       <div>
         <p><span>{{item.username || item.userNumber}}</span><starRate class="star-line" :rate="item.star/2" fontSize="13px"/><span>{{item.star}}分</span></p>
         <p>{{item.content}}</p>
-        <p>{{item.createTime | parseTime('{y}-{m}-{d} {h}:{i}:{s}')}}<span  @click="handleZan(item.id,item.flag)" :class="[item.flag === '1' ? 'zan' : 'unzan']"><svg-icon :data-index="n" icon-class="zan" class="zan-icon" />{{item.praiseCount}}</span></p>
+        <p>{{item.createTime | parseTime('{y}-{m}-{d} {h}:{i}:{s}')}}<span  @click="handleZan(item.id,item.flag)" :class="[item.flag === '1' ? 'zan' : 'unzan']"><svg-icon :data-index="index" icon-class="zan" class="zan-icon" />{{item.praiseCount}}</span></p>
       </div>
     </div>
   </div>
@@ -43,13 +43,17 @@ import {parseTime} from '@/utils/utils';
 import { IMG_URL } from '@/utils/constant';
 import starRate from '@/components/star-rate.vue';
 
+Vue.filter('parseTime', (val) => {
+  return val ? parseTime(val) : '暂无时间';
+})
+
 @Component({
   components: {
     starRate,
   },
 })
 export default class Comment extends Vue {
-  private courseId = this.$route.query.id;
+  private courseId = 0;
   private pageSize = 8;
   private currentPage = 1;
   private commentList = [];
@@ -58,8 +62,11 @@ export default class Comment extends Vue {
   private comment = '';
   private defaultImg = IMG_URL.USER.DEFAULT;
   private nullImg = IMG_URL.CONFIG_IMG.COMMENT_NULL;
+  private get isLogin() {
+      return this.$store.state.user.token;
+  }
   private created() {
-      console.log('课程评论');
+      this.courseId = this.$route.query.id;
       this.getCommentList();
   }
   private getCommentList() {
@@ -72,7 +79,7 @@ export default class Comment extends Vue {
               pageNum: this.currentPage,
               pageSize: this.pageSize
           }
-      }, (response) => {
+      }, (response: any) => {
           this.total = response.total;
           this.commentList = response.list;
       });
@@ -90,9 +97,7 @@ export default class Comment extends Vue {
       this.userRate = val;
   }
   private handleComment() {
-      if (!this.isLogin) {
-          this.$store.commit('SET_TOAST', 1);
-      } else {
+      if (this.isLogin){
           if (this.comment) {
               NetworkRequest.streamRequest({
                   url: '/evaluate/insertEValuate',
@@ -103,44 +108,47 @@ export default class Comment extends Vue {
                       star: this.userRate * 2
                   }
               }, (response) => {
-                  this.comment = '';
-                  this.userRate = 0;
-                  this.$message({
-                      message: '评论成功！',
-                      type: 'success'
-                  });
-                  this.getCommentList();
-                  this.$emit('onchange', true);
+                    this.comment = '';
+                    this.userRate = 0;
+                    this.$message({
+                        message: '评论成功！',
+                        type: 'success'
+                    });
+                    this.getCommentList();
+                    this.$emit('onchange', true);
               });
-          } else {
+        } else {
               this.$message({
                   message: '评论内容不能为空哦',
                   type: 'warning'
               });
-          }
-      }
-  }
-  private handleZan(id, flag) {
-      if (!this.isLogin) {
-          this.$store.commit('SET_TOAST', 1);
+        }
       } else {
-          const data = new FormData();
-          data.append('evaluateId', id);
-          NetworkRequest.streamRequest({
-              url: '/evaluate/praise',
-              method: 'post',
-              data: data
-          }, response => {
-              this.$message({
-                  message: `${flag === '0' ? '' : '取消'}点赞成功`,
-                  type: 'success'
-              });
-              this.getCommentList();
-          });
+            this.$router.push('login');
       }
+}
+private handleZan(id, flag) {
+    if (!this.isLogin) {
+        this.$router.push('login');
+    } else {
+        const data = new FormData();
+        data.append('evaluateId', id);
+        NetworkRequest.streamRequest({
+            url: '/evaluate/praise',
+            method: 'post',
+            data: data
+        }, response => {
+            this.$message({
+                message: `${flag === '0' ? '' : '取消'}点赞成功`,
+                type: 'success'
+            });
+            this.getCommentList();
+        });
+    }
+}
+
   }
 
-}
 </script>
 
 

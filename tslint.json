@@ -15,6 +15,9 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
-    "no-console": false
+    "no-console": false,
+    "no-bitwise": false,
+    "no-shadowed-variable": false,
+    "variable-name": false
   }
 }

@@ -44,7 +44,7 @@
   <div class="usual-box">
     <div class="left-box">
       <p v-show="currentTab === 0">简介：{{courseDetail.courseIntro}}</p>
-      <catalogue @changeVideoId="handleVideoId" v-if="currentTab === 0" :catalogue="catalogue" :price="courseDetail.price" :isBuy="courseDetail.buy" :courseName="courseDetail.name" :courseId="courseDetail.id"/>
+      <catalogue  v-if="currentTab === 0" :catalogue="catalogue" :price="courseDetail.price" :isBuy="courseDetail.buy" :courseName="courseDetail.name" :courseId="courseDetail.id"/>
       <div  class="top-comment" v-if="currentTab === 1" >
         <div class="top-comment-box">
           <span>综合评分</span>
@@ -153,7 +153,9 @@ export default class Detail extends Vue {
     private flag = 0;
     private courseName = '';
     private isBuy = 0;
-    private isLogin = true;
+    private get isLogin() {
+        return this.$store.state.user.token;
+    }
     private mounted() {
         this.courseId = Number(this.$route.query.id);
         this.fetchData(true);
@@ -272,7 +274,7 @@ export default class Detail extends Vue {
 
   private handleCollect() {
       if (!this.isLogin) {
-          this.$store.commit('SET_TOAST', 1);
+          this.$router.push('login');
       } else {
           NetworkRequest.streamRequest({
               url: '/course/collectCourse',
@@ -287,7 +289,6 @@ export default class Detail extends Vue {
                   type: 'success',
               });
               this.courseDetail.collect = this.courseDetail.collect === 0 ? 1 : 0;
-              this.$store.dispatch('getCollect', true);
           });
       }
   }

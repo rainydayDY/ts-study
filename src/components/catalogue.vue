@@ -10,7 +10,7 @@
       <p>{{index + 1}}章  {{item.chapterName}}</p>
       <p>{{item.intro}}</p>
       <div class="cata-child">
-        <span v-for="(child,childIndex) in item.videos" :key="childIndex" @click="handleToVideo(child.id, item.courseId)">
+        <span v-for="(child,childIndex) in item.videos" :key="childIndex">
           <p><svg-icon icon-class="play" class="play-icon"/> {{index+1}}-{{childIndex+1}}  {{child.title}}</p>
           <p v-if="child.studyFlag === 1">最近学习<svg-icon icon-class="study" class="study-icon"/></p>
         </span>
